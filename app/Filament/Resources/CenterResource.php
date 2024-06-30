@@ -17,6 +17,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
 use App\Enums\CenterGender;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Repeater;
 
 class CenterResource extends Resource
 {
@@ -25,8 +27,6 @@ class CenterResource extends Resource
     protected static ?string $modelLabel = 'مركز قرآني';
 
     protected static ?string $pluralModelLabel = 'مراكز قرآنية';
-
-
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -72,11 +72,20 @@ class CenterResource extends Resource
                     ->label('العنوان')
                     ->required()
                     ->columnSpan(1),
-                Select::make('الفئة المستهدفة')
-                    ->options(CenterGender::class)
-                    ->required()
-                    ->columnSpan(2),
-                
+                // Select::make('الفئة المستهدفة')
+                //     ->options(CenterGender::class)
+                //     ->required()
+                //     ->columnSpan(2),
+                Repeater::make('contacts')
+                ->relationship('contacts')
+                ->label('ارقام التواصل')    
+                ->helperText('اضف رقم التواصل')
+                ->columnSpan(2)
+                ->schema([
+                    TextInput::make('phone_number')->label('رقم الهاتف')->required()
+                ])      
+                ->collapsible()
+                ->minItems(1),         
             ]);
     }
 

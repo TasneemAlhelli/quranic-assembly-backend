@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Relationships\CenterRelationships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Center extends Model
 {
-    use HasFactory;
+    use HasFactory, CenterRelationships;
 
     protected $fillable = [
         'name',
