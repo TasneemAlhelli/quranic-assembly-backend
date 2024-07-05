@@ -19,6 +19,7 @@ use App\Enums\CenterGender;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
+use Filament\Tables\Columns\TextColumn;
 
 class CenterResource extends Resource
 {
@@ -93,7 +94,11 @@ class CenterResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')->label('ID'),
+                TextColumn::make('name')->label('الاسم'),
+                TextColumn::make('founder')->label('المؤسس'),
+                TextColumn::make('supervisor')->label('المشرف'),
+                TextColumn::make('city')->label('المنطقة'),
             ])
             ->filters([
                 //
