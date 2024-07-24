@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\CenterController;
-
-// Route::get('/centers', [CenterController::class, 'index']);
+use App\Http\Controllers\Api\AchievementController;
 
 Route::resource('/centers', CenterController::class);
-// //
+
+Route::resource('/achievements', AchievementController::class);
