@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('city');
             $table->string('address');
             $table->string('instagram')->nullable();
-            $table->integer('gender')->default(CenterGender::BOTH->value);
             $table->timestamps();
             $table->softDeletes();
         });
