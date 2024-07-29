@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('centers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description', 1024);
             $table->string('email')->unique();
             $table->string('founder');
             $table->string('supervisor');

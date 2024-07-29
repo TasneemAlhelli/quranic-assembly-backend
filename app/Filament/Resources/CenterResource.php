@@ -52,7 +52,6 @@ class CenterResource extends Resource
                     ->columnSpan(1),
                 TextInput::make('instagram')
                     ->label('الانستقرام')
-                    ->required()
                     ->columnSpan(1),
                 TextInput::make('founder')
                     ->label('المؤسس')
@@ -73,10 +72,6 @@ class CenterResource extends Resource
                     ->label('العنوان')
                     ->required()
                     ->columnSpan(1),
-                // Select::make('الفئة المستهدفة')
-                //     ->options(CenterGender::class)
-                //     ->required()
-                //     ->columnSpan(2),
                 Repeater::make('contacts')
                 ->relationship('contacts')
                 ->label('ارقام التواصل')    
