@@ -32,6 +32,8 @@ class Competition extends Model
         'name',
         'section',
         'founder',
+        'founded',
+        'occurrence',
         'supervisor',
         'phone_number',
         'age',
