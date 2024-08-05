@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
 
 class CompetitionResource extends Resource
 {
@@ -42,6 +43,14 @@ class CompetitionResource extends Resource
                 ->columnSpan(2),
                 TextInput::make('founder')
                 ->label('الجهة/الشخصية المؤسسة للمسابقة')
+                ->required()
+                ->columnSpan(1),
+                TextInput::make('founded')
+                ->label('تاريخ التأسيس')
+                ->required()
+                ->columnSpan(1),
+                TextInput::make('occurrence')
+                ->label('موعد المسابقة الدوري')
                 ->required()
                 ->columnSpan(1),
                 TextInput::make('supervisor')
@@ -75,7 +84,10 @@ class CompetitionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')->label('ID'),
+                TextColumn::make('name')->label('الاسم'),
+                TextColumn::make('founder')->label('المؤسس'),
+                TextColumn::make('supervisor')->label('المشرف'),
             ])
             ->filters([
                 //

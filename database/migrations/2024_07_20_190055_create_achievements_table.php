@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description', 1000)->nullable();
+            $table->string('description', 1024)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

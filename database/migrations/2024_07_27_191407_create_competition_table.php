@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('section');
             $table->string('founder');
+            $table->date('founded');
             $table->string('supervisor');
             $table->string('phone_number');
+            $table->string('occurrence'); 
             $table->string('age');
             $table->string('goal', 1000);
             $table->string('reason', 1000);

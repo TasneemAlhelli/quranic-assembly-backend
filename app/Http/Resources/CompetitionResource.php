@@ -18,6 +18,8 @@ class CompetitionResource extends JsonResource
       'name' => $this->name,
       'section' => $this->section,
       'founder' => $this->founder,
+      'founded' => $this->founded,
+      'occurrence' => $this->occurrence,
       'supervisor' => $this->supervisor,
       'phone_number' => $this->phone_number,
       'age' => $this->age,

@@ -20,13 +20,13 @@ class AchievementResource extends Resource
 {
     protected static ?string $model = Achievement::class;
 
-    protected static ?string $modelLabel = 'انجاز';
+    protected static ?string $modelLabel = 'إنجاز قرآني';
 
-    protected static ?string $pluralModelLabel = 'انجازات';
+    protected static ?string $pluralModelLabel = 'انجازات قرآنية';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'الانجازات';
+    protected static ?string $navigationLabel = 'الانجازات القرآنية';
 
 
     public static function form(Form $form): Form
