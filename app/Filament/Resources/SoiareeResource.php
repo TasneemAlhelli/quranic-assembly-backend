@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-
+use Filament\Tables\Columns\TextColumn;
 
 class SoiareeResource extends Resource
 {
@@ -47,6 +47,8 @@ class SoiareeResource extends Resource
                     ->columnSpan(2),
                 FileUpload::make('image')
                     ->image()
+                    ->disk('local')
+                    ->directory('soiarees')
                     ->label('اعلان الأمسية')
                     ->required()
                     ->columnSpan(2),
@@ -57,7 +59,11 @@ class SoiareeResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')->label('ID'),
+                TextColumn::make('name')->label('الاسم'),
+                TextColumn::make('place')->label('موقع الأمسية'),
+                TextColumn::make('date')->label('تاريخ الأمسية'),
+
             ])
             ->filters([
                 //
