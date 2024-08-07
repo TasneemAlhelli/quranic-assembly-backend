@@ -19,6 +19,7 @@ class SoiareeResource extends JsonResource
       'date' => $this->date,
       'place' => $this->place,
       'image' => $this->image,
+      'image_url' => $this->image_url,
     ];
   }
 }

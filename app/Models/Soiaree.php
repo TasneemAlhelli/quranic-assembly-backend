@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class Soiaree
@@ -27,4 +28,18 @@ class Soiaree extends Model
         'place',
         'image'
     ];
+
+    protected $appends = [
+        'image_url',
+    ];
+
+
+    /**
+     * Attribute: image url
+     * @return string
+     */
+    function getImageUrlAttribute(): string
+    {
+        return Storage::disk("local")->url($this->image);
+    }
 }

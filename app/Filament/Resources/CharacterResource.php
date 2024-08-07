@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AchievementResource\Pages;
-use App\Filament\Resources\AchievementResource\RelationManagers;
-use App\Models\Achievement;
+use App\Filament\Resources\CharacterResource\Pages;
+use App\Filament\Resources\CharacterResource\RelationManagers;
+use App\Models\Character;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,32 +13,36 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 
-class AchievementResource extends Resource
+class CharacterResource extends Resource
 {
-    protected static ?string $model = Achievement::class;
+    protected static ?string $model = Character::class;
 
-    protected static ?string $modelLabel = 'إنجاز قرآني';
+    protected static ?string $modelLabel = 'شخصية قرآنية';
 
-    protected static ?string $pluralModelLabel = 'انجازات قرآنية';
+    protected static ?string $pluralModelLabel = 'شخصيات قرآنية';
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'الانجازات القرآنية';
+    protected static ?string $navigationLabel = 'الشخصيات القرآنية';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
-                ->label('الاسم')
-                ->required()
-                ->columnSpan(2),
-                Textarea::make('description')
-                ->label('الوصف')
-                ->columnSpan(2),
+                    ->label('الاسم')
+                    ->required()
+                    ->columnSpan(2),
+                FileUpload::make('cv')
+                    ->disk('local')
+                    ->directory('characters')
+                    ->label('السيرة الذاتية')
+                    ->required()
+                    ->columnSpan(2),
             ]);
     }
 
@@ -72,9 +76,9 @@ class AchievementResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAchievements::route('/'),
-            'create' => Pages\CreateAchievement::route('/create'),
-            'edit' => Pages\EditAchievement::route('/{record}/edit'),
+            'index' => Pages\ListCharacters::route('/'),
+            'create' => Pages\CreateCharacter::route('/create'),
+            'edit' => Pages\EditCharacter::route('/{record}/edit'),
         ];
     }
 }
