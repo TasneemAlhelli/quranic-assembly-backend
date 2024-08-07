@@ -28,7 +28,6 @@ class AchievementResource extends Resource
 
     protected static ?string $navigationLabel = 'الانجازات القرآنية';
 
-
     public static function form(Form $form): Form
     {
         return $form

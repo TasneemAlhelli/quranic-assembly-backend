@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SoiareeResource\Pages;
-use App\Filament\Resources\SoiareeResource\RelationManagers;
-use App\Models\Soiaree;
+use App\Filament\Resources\CharacterResource\Pages;
+use App\Filament\Resources\CharacterResource\RelationManagers;
+use App\Models\Character;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,43 +13,34 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 
-class SoiareeResource extends Resource
+class CharacterResource extends Resource
 {
-    protected static ?string $model = Soiaree::class;
+    protected static ?string $model = Character::class;
 
-    protected static ?string $modelLabel = 'أمسية قرآنية';
+    protected static ?string $modelLabel = 'شخصية قرآنية';
 
-    protected static ?string $pluralModelLabel = 'أمسيات قرآنية';
+    protected static ?string $pluralModelLabel = 'شخصيات قرآنية';
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'الأمسيات قرآنية';
+    protected static ?string $navigationLabel = 'الشخصيات القرآنية';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label('اسم الامسية')
+                    ->label('الاسم')
                     ->required()
                     ->columnSpan(2),
-                DatePicker::make('date')
-                    ->label('تاريخ إقامة الأمسية')
-                    ->required()
-                    ->columnSpan(2),
-                TextInput::make('place')
-                    ->label('موقع الأمسية')
-                    ->required()
-                    ->columnSpan(2),
-                FileUpload::make('image')
-                    ->image()
+                FileUpload::make('cv')
                     ->disk('local')
-                    ->directory('soiarees')
-                    ->label('اعلان الأمسية')
+                    ->directory('characters')
+                    ->label('السيرة الذاتية')
                     ->required()
                     ->columnSpan(2),
             ]);
@@ -61,9 +52,6 @@ class SoiareeResource extends Resource
             ->columns([
                 TextColumn::make('id')->label('ID'),
                 TextColumn::make('name')->label('الاسم'),
-                TextColumn::make('place')->label('موقع الأمسية'),
-                TextColumn::make('date')->label('تاريخ الأمسية'),
-
             ])
             ->filters([
                 //
@@ -88,9 +76,9 @@ class SoiareeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSoiarees::route('/'),
-            'create' => Pages\CreateSoiaree::route('/create'),
-            'edit' => Pages\EditSoiaree::route('/{record}/edit'),
+            'index' => Pages\ListCharacters::route('/'),
+            'create' => Pages\CreateCharacter::route('/create'),
+            'edit' => Pages\EditCharacter::route('/{record}/edit'),
         ];
     }
 }

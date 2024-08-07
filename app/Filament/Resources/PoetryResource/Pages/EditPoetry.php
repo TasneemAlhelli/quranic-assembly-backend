@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\SoiareeResource\Pages;
+namespace App\Filament\Resources\PoetryResource\Pages;
 
-use App\Filament\Resources\SoiareeResource;
+use App\Filament\Resources\PoetryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditSoiaree extends EditRecord
+class EditPoetry extends EditRecord
 {
-    protected static string $resource = SoiareeResource::class;
+    protected static string $resource = PoetryResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -16,7 +16,6 @@ class EditSoiaree extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

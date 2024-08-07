@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\SoiareeResource\Pages;
+namespace App\Filament\Resources\CharacterResource\Pages;
 
-use App\Filament\Resources\SoiareeResource;
+use App\Filament\Resources\CharacterResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditSoiaree extends EditRecord
+class EditCharacter extends EditRecord
 {
-    protected static string $resource = SoiareeResource::class;
+    protected static string $resource = CharacterResource::class;
 
     protected function getHeaderActions(): array
     {

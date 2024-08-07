@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\SoiareeResource\Pages;
+namespace App\Filament\Resources\CharacterResource\Pages;
 
-use App\Filament\Resources\SoiareeResource;
+use App\Filament\Resources\CharacterResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListSoiarees extends ListRecords
+class ListCharacters extends ListRecords
 {
-    protected static string $resource = SoiareeResource::class;
+    protected static string $resource = CharacterResource::class;
 
     protected function getHeaderActions(): array
     {

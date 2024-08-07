@@ -63,6 +63,7 @@ class CenterResource extends Resource
                     ->columnSpan(1),
                 DatePicker::make('founded')
                     ->label('تاريخ التأسيس')
+                    ->required()
                     ->columnSpan(2),
                 TextInput::make('city')
                     ->label('المنطقة')
