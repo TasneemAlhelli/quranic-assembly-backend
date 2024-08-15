@@ -27,6 +27,9 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('المجمع القرآني النسوي في البحرين')
+            ->brandLogo(asset('image/logo.png'))
+            ->favicon(asset('image/icon.png'))
             ->colors([
                 'primary' => Color::Amber,
             ])

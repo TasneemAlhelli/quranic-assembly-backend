@@ -16,9 +16,4 @@ class ListSoiarees extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
 }

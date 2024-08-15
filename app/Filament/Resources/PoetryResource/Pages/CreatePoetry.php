@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePoetry extends CreateRecord
 {
     protected static string $resource = PoetryResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
