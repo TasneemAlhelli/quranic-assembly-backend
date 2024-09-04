@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CharacterResource\Pages;
-use App\Filament\Resources\CharacterResource\RelationManagers;
-use App\Models\Character;
+use App\Filament\Resources\AwardResource\Pages;
+use App\Filament\Resources\AwardResource\RelationManagers;
+use App\Models\Award;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,31 +15,37 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\DatePicker;
 
-class CharacterResource extends Resource
+class AwardResource extends Resource
 {
-    protected static ?string $model = Character::class;
+    protected static ?string $model = Award::class;
 
-    protected static ?string $modelLabel = 'شخصية قرآنية';
+    protected static ?string $modelLabel = 'قصة نجاح';
 
-    protected static ?string $pluralModelLabel = 'شخصيات قرآنية';
+    protected static ?string $pluralModelLabel = 'قصص نجاح';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'الشخصيات القرآنية';
+    protected static ?string $navigationLabel = 'قصص النجاح';
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label('الاسم')
+                    ->label('اسم الجائزة')
                     ->required()
                     ->columnSpan(2),
-                FileUpload::make('cv')
-                    ->disk('local')
-                    ->directory('characters')
-                    ->label('السيرة الذاتية')
+                DatePicker::make('date')
+                    ->label('تاريخ الحصول على الجائزة')
+                    ->required()
+                    ->columnSpan(2),
+                FileUpload::make('image')
+                    ->disk('public')
+                    ->directory('awards')
+                    ->label('صورة الجائزة')
                     ->required()
                     ->columnSpan(2),
             ]);
@@ -50,7 +56,8 @@ class CharacterResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('ID'),
-                TextColumn::make('name')->label('الاسم'),
+                TextColumn::make('name')->label('اسم الجائزة'),
+                TextColumn::make('date')->label('تاريخ الحصول على الجائزة'),
             ])
             ->filters([
                 //
@@ -75,9 +82,9 @@ class CharacterResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCharacters::route('/'),
-            'create' => Pages\CreateCharacter::route('/create'),
-            'edit' => Pages\EditCharacter::route('/{record}/edit'),
+            'index' => Pages\ListAwards::route('/'),
+            'create' => Pages\CreateAward::route('/create'),
+            'edit' => Pages\EditAward::route('/{record}/edit'),
         ];
     }
 }
