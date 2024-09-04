@@ -19,6 +19,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\FileUpload;
 
 class CenterResource extends Resource
 {
@@ -81,7 +82,7 @@ class CenterResource extends Resource
                     TextInput::make('phone_number')->label('رقم الهاتف')->required()
                 ])      
                 ->collapsible()
-                ->minItems(1),         
+                ->minItems(1),     
             ]);
     }
 
