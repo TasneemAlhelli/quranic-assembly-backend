@@ -17,6 +17,7 @@ class AchievementResource extends JsonResource
       'id' => $this->id,
       'name' => $this->name,
       'description' => $this->description,
+      'link' => $this->link
     ];
   }
 }

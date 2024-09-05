@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Select;
+use App\Enums\Sections;
 
 class AchievementResource extends Resource
 {
@@ -33,12 +35,22 @@ class AchievementResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                ->label('الاسم')
-                ->required()
-                ->columnSpan(2),
+                    ->label('الاسم')
+                    ->required()
+                    ->columnSpan(2),
                 Textarea::make('description')
-                ->label('الوصف')
-                ->columnSpan(2),
+                    ->label('الوصف')
+                    ->columnSpan(2),
+                Select::make('link')
+                    ->label('ربط بصفحة')
+                    ->options(['/centers'  => 'المؤسسات والمراكز القرآنية',
+                                '/soiarees' =>'الأمسيات القرآنية' ,
+                                '/competitions' =>  'المسابقات القرآنية',
+                                '/poetries' =>  'فرق التواشيج النسائية',
+                                '/characters' =>  'الشخصيات القرآنية',
+                                '/courses'=>   'التدريب والتأهيل'])
+                    ->columnSpan(2),
+
             ]);
     }
 
