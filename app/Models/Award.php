@@ -27,4 +27,13 @@ class Award extends Model
         'date',
         'image'
     ];
+
+    protected $appends = [
+        'image_url'
+    ];
+
+    public function getImageUrlAttribute(): string 
+    {
+        return env('APP_URL') . '/storage/' . $this->image;
+    }
 }

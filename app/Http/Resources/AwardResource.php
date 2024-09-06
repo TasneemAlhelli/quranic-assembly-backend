@@ -17,7 +17,8 @@ class AwardResource extends JsonResource
       'id' => $this->id,
       'name' => $this->name,
       'date' => $this->date,
-      'image' => $this->image
+      'image' => $this->image,
+      'image_url' => $this->image_url,
     ];
   }
 }
