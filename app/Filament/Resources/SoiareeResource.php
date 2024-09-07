@@ -47,7 +47,7 @@ class SoiareeResource extends Resource
                     ->columnSpan(2),
                 FileUpload::make('image')
                     ->image()
-                    ->disk('local')
+                    ->disk('public')
                     ->directory('soiarees')
                     ->label('اعلان الأمسية')
                     ->required()

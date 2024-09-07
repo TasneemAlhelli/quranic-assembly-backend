@@ -61,6 +61,7 @@ class CourseResource extends Resource
                     ->required()
                     ->columnSpan(1),
                 FileUpload::make('image')
+                    ->image()
                     ->disk('public')
                     ->preserveFilenames()
                     ->directory('courses')

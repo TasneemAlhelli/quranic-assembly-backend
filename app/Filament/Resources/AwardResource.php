@@ -43,6 +43,7 @@ class AwardResource extends Resource
                     ->required()
                     ->columnSpan(2),
                 FileUpload::make('image')
+                    ->image()
                     ->disk('public')
                     ->directory('awards')
                     ->label('صورة الجائزة')

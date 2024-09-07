@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
  * @property string name 
  * @property string date 
  * @property string image 
+ * @property string image_url
  * @property string created_at
  * @property string updated_at
  * @property string deleted_at
@@ -40,6 +41,6 @@ class Soiaree extends Model
      */
     function getImageUrlAttribute(): string
     {
-        return Storage::disk("local")->url($this->image);
+        return env('APP_URL') . '/storage/' . $this->image;
     }
 }
