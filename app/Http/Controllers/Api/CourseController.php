@@ -22,7 +22,7 @@ class CourseController extends Controller {
   }
 
   public function show($id): JsonResource {
-    $course = Course::with(['subjects', 'attendees'])->findOrFail($id);
+    $course = Course::with(['subjects', 'attendees', 'attachments'])->findOrFail($id);
 
     CourseResource::wrap('course');
 
