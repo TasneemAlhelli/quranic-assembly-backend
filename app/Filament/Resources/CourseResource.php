@@ -18,6 +18,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\FileUpload;
 
 class CourseResource extends Resource
 {
@@ -59,6 +60,12 @@ class CourseResource extends Resource
                     ->label('تاريخ  الدورة')
                     ->required()
                     ->columnSpan(1),
+                FileUpload::make('image')
+                    ->disk('public')
+                    ->preserveFilenames()
+                    ->directory('courses')
+                    ->label('الشعار')
+                    ->columnSpan(2),
                 TextInput::make('content_heading')
                     ->label("عنوان محتوى الدورة والمواد التعليمية")
                     ->columnSpan(2),
@@ -66,6 +73,19 @@ class CourseResource extends Resource
                     ->label("وصف للمحتوى و المواد")
                     ->required()
                     ->columnSpan(2),
+                Repeater::make('attachments')
+                    ->relationship('attachments')
+                    ->label('المرفقات')    
+                    ->helperText('اضف مرفق')
+                    ->columnSpan(2)
+                    ->schema([
+                        FileUpload::make('attachment')
+                            ->disk('public')
+                            ->directory('courses/attachments')
+                            ->label('مرفق')
+                            ->columnSpan(2),
+                    ])      
+                    ->collapsible(),
                 Repeater::make('subjects')
                     ->relationship('subjects')
                     ->label('المواد')    

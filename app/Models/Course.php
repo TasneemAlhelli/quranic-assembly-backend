@@ -32,6 +32,28 @@ class Course extends Model
         'place',
         'date',
         'content_heading',
-        'content'
+        'content',
+        'image'
     ];
+
+    protected $appends = [
+        'image_url',
+        'type_text'
+    ];
+
+    public function getImageUrlAttribute(): string 
+    {
+        return env('APP_URL') . '/storage/' . $this->image;
+    }
+
+    public function getTypeTextAttribute($value): string 
+    {
+        if ($this->type == 'inside') {
+            return 'في الداخل';
+        } else if ($this->type == 'outside') {
+            return 'في الخارج';
+        } else {
+            return '-';
+        }
+    }
 }
