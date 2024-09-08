@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\FileUpload;
 
 class CompetitionResource extends Resource
 {
@@ -34,49 +35,55 @@ class CompetitionResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                ->label('اسم المسابقة')
-                ->required()
-                ->columnSpan(2),
+                    ->label('اسم المسابقة')
+                    ->required()
+                    ->columnSpan(2),
                 TextInput::make('section')
-                ->label('فروع المسابقة')
-                ->required()
-                ->columnSpan(2),
+                    ->label('فروع المسابقة')
+                    ->required()
+                    ->columnSpan(2),
                 TextInput::make('founder')
-                ->label('الجهة/الشخصية المؤسسة للمسابقة')
-                ->required()
-                ->columnSpan(1),
+                    ->label('الجهة/الشخصية المؤسسة للمسابقة')
+                    ->required()
+                    ->columnSpan(1),
                 TextInput::make('founded')
-                ->label('تاريخ التأسيس')
-                ->required()
-                ->columnSpan(1),
+                    ->label('تاريخ التأسيس')
+                    ->required()
+                    ->columnSpan(1),
                 TextInput::make('occurrence')
-                ->label('موعد المسابقة الدوري')
-                ->required()
-                ->columnSpan(1),
+                    ->label('موعد المسابقة الدوري')
+                    ->required()
+                    ->columnSpan(1),
                 TextInput::make('supervisor')
-                ->label('المسؤولة عن المسابقة')
-                ->required()
-                ->columnSpan(1),
+                    ->label('المسؤولة عن المسابقة')
+                    ->required()
+                    ->columnSpan(1),
                 TextInput::make('phone_number')
-                ->label('هاتف التواصل')
-                ->required()
-                ->columnSpan(1),
+                    ->label('هاتف التواصل')
+                    ->required()
+                    ->columnSpan(1),
                 TextInput::make('age')
-                ->label('الفئة العمرية')
-                ->required()
-                ->columnSpan(1),
+                    ->label('الفئة العمرية')
+                    ->required()
+                    ->columnSpan(1),
                 Textarea::make('goal')
-                ->label("اهداف المسابقة")
-                ->required()
-                ->columnSpan(2),
+                    ->label("اهداف المسابقة")
+                    ->required()
+                    ->columnSpan(2),
                 Textarea::make('reason')
-                ->label("أسباب نشوء المسابقة")
-                ->required()
-                ->columnSpan(2),
+                    ->label("أسباب نشوء المسابقة")
+                    ->required()
+                    ->columnSpan(2),
                 TextInput::make('url')
-                ->label('وصلة موقع المسابقة الإلكتروني/انستقرام')
-                ->required()
-                ->columnSpan(2),
+                    ->label('وصلة موقع المسابقة الإلكتروني/انستقرام')
+                    ->required()
+                    ->columnSpan(2),
+                FileUpload::make('image')
+                    ->image()
+                    ->disk('public')
+                    ->directory('competitions')
+                    ->label('صورة')
+                    ->columnSpan(2),
             ]);
     }
 
