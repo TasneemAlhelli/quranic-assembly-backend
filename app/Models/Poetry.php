@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Relationships\PoetryRelationships;
 
 /**
  * Class Poetry 
@@ -25,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Poetry extends Model
 {
-    use HasFactory;
+    use HasFactory, PoetryRelationships;
 
     protected $fillable = [
         'name',

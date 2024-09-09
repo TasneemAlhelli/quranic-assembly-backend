@@ -16,6 +16,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\FileUpload;
 
 class PoetryResource extends Resource
 {
@@ -69,6 +71,19 @@ class PoetryResource extends Resource
                 TextInput::make('instagram')
                     ->label('الانستقرام')
                     ->columnSpan(1),
+                Repeater::make('attachments')
+                    ->relationship('attachments')
+                    ->label('المرفقات')    
+                    ->helperText('اضف مرفق')
+                    ->columnSpan(2)
+                    ->schema([
+                        FileUpload::make('attachment')
+                            ->disk('public')
+                            ->directory('poetries/attachments')
+                            ->label('مرفق')
+                            ->columnSpan(2),
+                    ])      
+                    ->collapsible(),
             ]);
     }
 

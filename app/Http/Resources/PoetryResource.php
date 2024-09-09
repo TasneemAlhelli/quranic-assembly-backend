@@ -24,6 +24,8 @@ class PoetryResource extends JsonResource
       'member' => $this->member,
       'phone_number' => $this->phone_number,
       'instagram' => $this->instagram,
+      'attachments' => PoetryAttachmentResource::collection($this->whenLoaded('attachments'))
+
     ];
   }
 }
