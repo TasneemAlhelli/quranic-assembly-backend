@@ -21,4 +21,19 @@ class Character extends Model
         'name',
         'cv',
     ];
+
+
+    protected $appends = [
+        'cv_url',
+    ];
+
+
+    /**
+     * Attribute: cv url
+     * @return string
+     */
+    function getCvUrlAttribute(): string
+    {
+        return env('APP_URL') . '/storage/' . $this->cv;
+    }
 }
