@@ -80,6 +80,9 @@ class CompetitionResource extends Resource
                     ->columnSpan(2),
                 FileUpload::make('image')
                     ->image()
+                    ->imageResizeTargetWidth('368')
+                    ->imageResizeTargetHeight('400')
+                    ->preserveFilenames()
                     ->disk('public')
                     ->directory('competitions')
                     ->label('صورة')

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CharacterResource\Pages;
-use App\Filament\Resources\CharacterResource\RelationManagers;
-use App\Models\Character;
+use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,21 +12,24 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 
-class CharacterResource extends Resource
+class UserResource extends Resource
 {
-    protected static ?string $model = Character::class;
+    protected static ?string $model = User::class;
 
-    protected static ?string $modelLabel = 'شخصية قرآنية';
+    protected static ?string $modelLabel = 'مستخدم';
 
-    protected static ?string $pluralModelLabel = 'شخصيات قرآنية';
+    protected static ?string $pluralModelLabel = 'مستخدمين';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'الشخصيات القرآنية';
+    protected static ?string $navigationLabel = 'المستخدمين';
+    
+    protected static ?int $navigationSort = 1;
+
+
 
     public static function form(Form $form): Form
     {
@@ -36,14 +39,17 @@ class CharacterResource extends Resource
                     ->label('الاسم')
                     ->required()
                     ->columnSpan(2),
-                FileUpload::make('cv')
-                    ->disk('public')
-                    ->acceptedFileTypes(['application/pdf'])
-                    ->directory('characters/attachments')
-                    ->preserveFilenames()
-                    ->label('السيرة الذاتية')
+                TextInput::make('email')
+                    ->label('البريد الالكتروني')
                     ->required()
                     ->columnSpan(2),
+                TextInput::make('password')
+                    ->password()
+                    ->label('كلمة السر')
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->required(fn (string $context): bool => $context === 'create')
+                    ->columnSpan(2)
             ]);
     }
 
@@ -53,6 +59,8 @@ class CharacterResource extends Resource
             ->columns([
                 TextColumn::make('id')->label('ID'),
                 TextColumn::make('name')->label('الاسم'),
+                TextColumn::make('email')->label('البريد الالكتروني'),
+
             ])
             ->filters([
                 //
@@ -77,9 +85,9 @@ class CharacterResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCharacters::route('/'),
-            'create' => Pages\CreateCharacter::route('/create'),
-            'edit' => Pages\EditCharacter::route('/{record}/edit'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

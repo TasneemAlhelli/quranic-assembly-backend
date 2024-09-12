@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SoiareeResource\Pages;
-use App\Filament\Resources\SoiareeResource\RelationManagers;
-use App\Models\Soiaree;
+use App\Filament\Resources\SoireeResource\Pages;
+use App\Filament\Resources\SoireeResource\RelationManagers;
+use App\Models\Soiree;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,9 +17,9 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 
-class SoiareeResource extends Resource
+class SoireeResource extends Resource
 {
-    protected static ?string $model = Soiaree::class;
+    protected static ?string $model = Soiree::class;
 
     protected static ?string $modelLabel = 'أمسية قرآنية';
 
@@ -48,7 +48,7 @@ class SoiareeResource extends Resource
                 FileUpload::make('image')
                     ->image()
                     ->disk('public')
-                    ->directory('soiarees')
+                    ->directory('soirees')
                     ->label('اعلان الأمسية')
                     ->required()
                     ->columnSpan(2),
@@ -88,9 +88,9 @@ class SoiareeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSoiarees::route('/'),
-            'create' => Pages\CreateSoiaree::route('/create'),
-            'edit' => Pages\EditSoiaree::route('/{record}/edit'),
+            'index' => Pages\ListSoirees::route('/'),
+            'create' => Pages\CreateSoiree::route('/create'),
+            'edit' => Pages\EditSoiree::route('/{record}/edit'),
         ];
     }
 }

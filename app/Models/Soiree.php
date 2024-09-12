@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Class Soiaree
+ * Class Soiree
  * @package App\Models 
  * 
  * @property int id
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Storage;
  * @property string updated_at
  * @property string deleted_at
 */
-class Soiaree extends Model
+class Soiree extends Model
 {
     use HasFactory;
 

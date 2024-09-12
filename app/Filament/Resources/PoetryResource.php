@@ -79,6 +79,7 @@ class PoetryResource extends Resource
                     ->schema([
                         FileUpload::make('attachment')
                             ->disk('public')
+                            ->preserveFilenames()
                             ->directory('poetries/attachments')
                             ->label('مرفق')
                             ->columnSpan(2),

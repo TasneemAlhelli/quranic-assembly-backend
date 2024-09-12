@@ -74,15 +74,25 @@ class CenterResource extends Resource
                     ->required()
                     ->columnSpan(1),
                 Repeater::make('contacts')
-                ->relationship('contacts')
-                ->label('ارقام التواصل')    
-                ->helperText('اضف رقم التواصل')
-                ->columnSpan(2)
-                ->schema([
-                    TextInput::make('phone_number')->label('رقم الهاتف')->required()
-                ])      
-                ->collapsible()
-                ->minItems(1),     
+                    ->relationship('contacts')
+                    ->label('ارقام التواصل')    
+                    ->helperText('اضف رقم التواصل')
+                    ->columnSpan(2)
+                    ->schema([
+                        TextInput::make('phone_number')->label('رقم الهاتف')->required()
+                    ])
+                    ->collapsible()
+                    ->minItems(1),  
+                FileUpload::make('image')
+                    ->image()
+                    ->imageResizeTargetWidth('368')
+                    ->imageResizeTargetHeight('400')
+                    ->preserveFilenames()
+                    ->disk('public')
+                    ->directory('awards')
+                    ->label('صورة الجائزة')
+                    ->required()
+                    ->columnSpan(2),
             ]);
     }
 
