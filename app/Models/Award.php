@@ -32,8 +32,10 @@ class Award extends Model
         'image_url'
     ];
 
-    public function getImageUrlAttribute(): string 
+    public function getImageUrlAttribute(): string|null 
     {
-        return env('APP_URL') . '/storage/' . $this->image;
-    }
+        if (!is_null($this->image) && !empty($this->image)) {
+            return env('APP_URL') . '/storage/' . $this->image;
+        }
+        return null;    }
 }

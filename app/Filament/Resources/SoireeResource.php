@@ -50,7 +50,6 @@ class SoireeResource extends Resource
                     ->disk('public')
                     ->directory('soirees')
                     ->label('اعلان الأمسية')
-                    ->required()
                     ->columnSpan(2),
             ]);
     }

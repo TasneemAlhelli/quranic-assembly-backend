@@ -91,7 +91,6 @@ class CenterResource extends Resource
                     ->disk('public')
                     ->directory('awards')
                     ->label('صورة الجائزة')
-                    ->required()
                     ->columnSpan(2),
             ]);
     }

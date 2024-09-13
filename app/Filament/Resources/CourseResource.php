@@ -87,6 +87,7 @@ class CourseResource extends Resource
                             ->directory('courses/attachments')
                             ->preserveFilenames()
                             ->label('مرفق')
+                            ->required()
                             ->columnSpan(2),
                     ])      
                     ->collapsible(),
