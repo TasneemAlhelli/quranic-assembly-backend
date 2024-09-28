@@ -76,7 +76,6 @@ class CompetitionResource extends Resource
                     ->columnSpan(2),
                 TextInput::make('url')
                     ->label('وصلة موقع المسابقة الإلكتروني/انستقرام')
-                    ->required()
                     ->columnSpan(2),
                 FileUpload::make('image')
                     ->image()

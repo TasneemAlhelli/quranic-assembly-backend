@@ -43,7 +43,7 @@ class CenterResource extends Resource
                     ->required()
                     ->columnSpan(2),
                 Textarea::make('description')
-                    ->label("الوصف")
+                    ->label("فروع التدريس")
                     ->required()
                     ->columnSpan(2),
                 TextInput::make('email')
@@ -89,8 +89,8 @@ class CenterResource extends Resource
                     ->imageResizeTargetHeight('400')
                     ->preserveFilenames()
                     ->disk('public')
-                    ->directory('awards')
-                    ->label('صورة الجائزة')
+                    ->directory('centers')
+                    ->label('شعار المركز')
                     ->columnSpan(2),
             ]);
     }
