@@ -43,6 +43,10 @@ class AwardResource extends Resource
                     ->required()
                     ->columnSpan(2),
                 FileUpload::make('image')
+                    ->image()
+                    ->imageResizeTargetWidth('368')
+                    ->imageResizeTargetHeight('400')
+                    ->preserveFilenames()
                     ->disk('public')
                     ->directory('awards')
                     ->label('صورة الجائزة')

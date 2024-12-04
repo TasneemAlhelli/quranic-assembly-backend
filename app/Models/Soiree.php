@@ -7,18 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Class Soiaree
+ * Class Soiree
  * @package App\Models 
  * 
  * @property int id
  * @property string name 
  * @property string date 
  * @property string image 
+ * @property string image_url
  * @property string created_at
  * @property string updated_at
  * @property string deleted_at
 */
-class Soiaree extends Model
+class Soiree extends Model
 {
     use HasFactory;
 
@@ -38,8 +39,11 @@ class Soiaree extends Model
      * Attribute: image url
      * @return string
      */
-    function getImageUrlAttribute(): string
+    function getImageUrlAttribute(): string|null
     {
-        return Storage::disk("local")->url($this->image);
+        if (!is_null($this->image) && !empty($this->image)) {
+            return env('APP_URL') . '/storage/' . $this->image;
+        }
+        return null;
     }
 }

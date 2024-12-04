@@ -26,6 +26,8 @@ class CompetitionResource extends JsonResource
       'goal' => $this->goal,
       'reason' => $this->reason,
       'url' => $this->url,
+      'image' => $this->image,
+      'image_url' => $this->image_url
     ];
   }
 }

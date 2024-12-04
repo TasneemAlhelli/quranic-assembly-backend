@@ -61,6 +61,9 @@ class CourseResource extends Resource
                     ->required()
                     ->columnSpan(1),
                 FileUpload::make('image')
+                    ->image()
+                    ->imageResizeTargetWidth('368')
+                    ->imageResizeTargetHeight('400')
                     ->disk('public')
                     ->preserveFilenames()
                     ->directory('courses')
@@ -82,7 +85,9 @@ class CourseResource extends Resource
                         FileUpload::make('attachment')
                             ->disk('public')
                             ->directory('courses/attachments')
+                            ->preserveFilenames()
                             ->label('مرفق')
+                            ->required()
                             ->columnSpan(2),
                     ])      
                     ->collapsible(),

@@ -24,6 +24,8 @@ class CenterResource extends JsonResource
       'city' => $this->city,
       'address' => $this->address,
       'instagram' => $this->instagram,
+      'image' => $this->image,
+      'image_url' => $this->image_url,
       'contacts' => CenterContactResource::collection($this->whenLoaded('contacts'))
     ];
   }

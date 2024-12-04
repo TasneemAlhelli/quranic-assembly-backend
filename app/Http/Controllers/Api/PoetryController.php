@@ -23,7 +23,7 @@ class PoetryController extends Controller {
   }
 
   public function show($id): JsonResource {
-    $poetry = Poetry::findOrFail($id);
+    $poetry = Poetry::with('attachments')->findOrFail($id);
 
     PoetryResource::wrap('poetry');
 

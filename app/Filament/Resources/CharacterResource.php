@@ -37,8 +37,10 @@ class CharacterResource extends Resource
                     ->required()
                     ->columnSpan(2),
                 FileUpload::make('cv')
-                    ->disk('local')
-                    ->directory('characters')
+                    ->disk('public')
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->directory('characters/attachments')
+                    ->preserveFilenames()
                     ->label('السيرة الذاتية')
                     ->required()
                     ->columnSpan(2),

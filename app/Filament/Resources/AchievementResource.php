@@ -44,13 +44,12 @@ class AchievementResource extends Resource
                 Select::make('link')
                     ->label('ربط بصفحة')
                     ->options(['/centers'  => 'المؤسسات والمراكز القرآنية',
-                                '/soiarees' =>'الأمسيات القرآنية' ,
+                                '/soirees' =>'الأمسيات القرآنية' ,
                                 '/competitions' =>  'المسابقات القرآنية',
                                 '/poetries' =>  'فرق التواشيج النسائية',
                                 '/characters' =>  'الشخصيات القرآنية',
                                 '/courses'=>   'التدريب والتأهيل'])
                     ->columnSpan(2),
-
             ]);
     }
 

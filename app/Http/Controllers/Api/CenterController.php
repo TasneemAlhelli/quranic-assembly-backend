@@ -17,8 +17,8 @@ class CenterController extends Controller {
     $centers = Center::orderBy('created_at')->get();
 
     CenterResource::wrap('centers');
-    
-    return CenterResource::collection($centers); 
+
+    return CenterResource::collection($centers);
   }
 
   public function show($id): JsonResource {

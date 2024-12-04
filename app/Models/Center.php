@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string address
  * @property string instagram
  * @property int gender
+ * @property string image
  * @property string created_at
  * @property string updated_at
  * @property string deleted_at
@@ -39,6 +40,19 @@ class Center extends Model
         'city',
         'address',
         'instagram',
-        'gender'
+        'gender',
+        'image'
     ];
+
+    protected $appends = [
+        'image_url'
+    ];
+
+    public function getImageUrlAttribute(): string|null
+    {
+        if (!is_null($this->image) && !empty($this->image)) {
+            return env('APP_URL') . '/storage/' . $this->image;
+        }
+        return null;
+    }
 }
